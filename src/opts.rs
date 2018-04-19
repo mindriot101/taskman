@@ -10,7 +10,7 @@ pub enum Opts {
         description: String,
         #[structopt(short = "t", long = "tag")]
         tag: Vec<String>,
-        #[structopt(short = "p", long = "Priority")]
+        #[structopt(short = "p", long = "priority")]
         priority: Option<Priority>,
     },
 }

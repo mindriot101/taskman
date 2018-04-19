@@ -1,7 +1,7 @@
 use std::str::FromStr;
 use failure::Error;
 
-#[derive(Debug, PartialEq, Clone)]
+#[derive(Debug, PartialEq, Clone, DbEnum)]
 pub enum Priority {
     High,
     Medium,

@@ -1,8 +1,10 @@
 table! {
+    use priority::PriorityMapping;
+    use diesel::sql_types::*;
+
     tasks (id) {
         id -> Integer,
         description -> Text,
-        created_at -> Timestamp,
-        updated_at -> Nullable<Timestamp>,
+        priority -> Nullable<PriorityMapping>,
     }
 }
