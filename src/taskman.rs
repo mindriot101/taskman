@@ -1,7 +1,10 @@
+use diesel;
 use opts::Opts;
 use db::establish_connection;
 use errors::Result;
 use diesel::sqlite::SqliteConnection;
+use diesel::prelude::*;
+use db::models::NewTask;
 
 pub struct TaskMan {
     connection: SqliteConnection,
@@ -15,12 +18,29 @@ impl TaskMan {
     }
 
     pub fn run(&mut self) -> Result<()> {
-        match self.opts {
-            ref opts @ Opts::Add { .. } => {
-                println!("{:?}", opts);
+        // TODO: remove this clone
+        let opts = self.opts.clone();
+        match opts {
+            Opts::Add {
+                ref description, ..
+            } => {
+                self.add_task(description)?;
             }
         }
 
+        Ok(())
+    }
+
+    fn add_task(&mut self, description: &str) -> Result<()> {
+        use db::schema::tasks;
+
+        let new_task = NewTask {
+            description: description,
+        };
+
+        diesel::insert_into(tasks::table)
+            .values(&new_task)
+            .execute(&self.connection)?;
         Ok(())
     }
 }

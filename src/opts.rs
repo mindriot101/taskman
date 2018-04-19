@@ -1,7 +1,7 @@
 use structopt::StructOpt;
 use priority::Priority;
 
-#[derive(Debug, StructOpt)]
+#[derive(Debug, StructOpt, Clone)]
 #[structopt(name = "taskman", about = "Task manager")]
 pub enum Opts {
     #[structopt(name = "add")]

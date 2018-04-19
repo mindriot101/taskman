@@ -1,3 +1,6 @@
+pub mod schema;
+pub mod models;
+
 use errors::Result;
 use diesel::sqlite::SqliteConnection;
 use diesel::Connection;
