@@ -7,7 +7,6 @@ use structopt::StructOpt;
 
 fn main() {
     let opt = Opts::from_args();
-    println!("{:?}", opt);
     TaskMan::from_opts(opt)
         .expect("error")
         .run()
