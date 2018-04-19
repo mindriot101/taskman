@@ -4,3 +4,6 @@ version = "0.1.0"
 authors = ["Simon Walker <s.r.walker101@googlemail.com>"]
 
 [dependencies]
+termion = "1.5.1"
+diesel = { version = "1.2.2", features = ["sqlite"] }
+structopt = "0.2.7"
