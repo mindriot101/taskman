@@ -27,7 +27,6 @@ impl FromStr for Priority {
 
 #[cfg(test)]
 mod tests {
-    use std::str::FromStr;
     use super::*;
 
     #[test]

@@ -1,4 +1,3 @@
-use structopt::StructOpt;
 use priority::Priority;
 
 #[derive(Debug, StructOpt, Clone)]
