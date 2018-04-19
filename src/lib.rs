@@ -7,19 +7,6 @@ extern crate structopt;
 pub mod opts;
 mod db;
 pub mod errors;
+mod taskman;
 
-use errors::Result;
-use diesel::sqlite::SqliteConnection;
-
-pub struct TaskMan {
-    connection: SqliteConnection,
-}
-
-impl TaskMan {
-    pub fn from_opts(opts: opts::Opts) -> Result<Self> {
-        let connection = db::establish_connection()?;
-        Ok(TaskMan { connection })
-    }
-
-    pub fn run(&mut self) {}
-}
+pub use taskman::TaskMan;

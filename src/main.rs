@@ -7,5 +7,8 @@ use structopt::StructOpt;
 
 fn main() {
     let opt = Opts::from_args();
-    TaskMan::from_opts(opt).expect("error").run();
+    TaskMan::from_opts(opt)
+        .expect("error")
+        .run()
+        .expect("running");
 }
