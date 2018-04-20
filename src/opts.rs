@@ -12,4 +12,6 @@ pub enum Opts {
         #[structopt(short = "p", long = "priority")]
         priority: Option<Priority>,
     },
+    #[structopt(name = "list")]
+    List {},
 }

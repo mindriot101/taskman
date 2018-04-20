@@ -2,9 +2,9 @@ use super::schema::tasks;
 use priority::Priority;
 use diesel::{self, result, RunQueryDsl, sqlite::SqliteConnection};
 
-#[derive(Queryable, Identifiable)]
+#[derive(Debug, Queryable, Identifiable)]
 pub struct Task {
-    pub id: u32,
+    pub id: i32,
     pub description: String,
     pub priority: Option<Priority>,
 }
