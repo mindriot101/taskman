@@ -1,10 +1,8 @@
-use diesel;
 use opts::Opts;
 use db::establish_connection;
 use priority::Priority;
 use errors::Result;
 use diesel::sqlite::SqliteConnection;
-use diesel::prelude::*;
 use db::models::NewTask;
 
 pub struct TaskMan {
@@ -35,17 +33,7 @@ impl TaskMan {
     }
 
     fn add_task(&mut self, description: String, priority: Option<Priority>) -> Result<()> {
-        use db::schema::tasks;
-
-        let new_task = NewTask {
-            description: &description,
-            priority: priority,
-        };
-
-        diesel::insert_into(tasks::table)
-            .values(&new_task)
-            .execute(&self.connection)?;
-
+        NewTask::new(&description, priority).create(&self.connection)?;
         Ok(())
     }
 }
